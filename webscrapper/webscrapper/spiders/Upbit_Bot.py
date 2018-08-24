@@ -28,11 +28,16 @@ class UpbitBotSpider(scrapy.Spider):
     allowed_domains = ['upbit.com']
     start_urls = ['https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC']
     
+    custom_settings = {
+        'USER_AGENT': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+    }
+
     def __init__(self):
-        #options = Options()
+        options = Options()
         #options.set_headless(headless=True)
         #options.add_argument('--disable-gpu')
-        self.driver =wd.Chrome("/home/kalyan/Documents/chromedriver")#,chrome_options=options)
+        self.driver =wd.Chrome("/home/kalyan/Documents/chromedriver",chrome_options=options)
+        self.driver.maximize_window()
     
     def parse(self, response):
         self.driver.implicitly_wait(15)
