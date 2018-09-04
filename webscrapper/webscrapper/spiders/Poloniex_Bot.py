@@ -68,5 +68,3 @@ class PoloniexBotSpider(scrapy.Spider):
         
         mysql_output(self.name, result)
 
-    def parse(self, response):
-        pass
